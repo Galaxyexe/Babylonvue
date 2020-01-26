@@ -1,13 +1,14 @@
 <template>
   <div>
-    <h1>Hello from ProfilePage</h1>
+    <h1>ProfilePage</h1>
+    <p>Here is some information. This is the ProfilePage page</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: "ProfilePage"
+  name: "ProfilePage" //this is the name of the component
 };
 </script>
-<style scoped>
+<style>
 </style>

@@ -1,18 +1,21 @@
 <template>
   <div>
-    <Navbar />
-    <h1>Hello from News</h1>
+    <div>
+      <TrendingNews />
+    </div>
+    <h1>News</h1>
+    <p>Here is some information. This is the news page</p>
   </div>
 </template>
 
 <script>
-import Navbar from "../components/Navbar";
+import TrendingNews from "@/components/TrendingNews";
 export default {
   name: "News",
   components: {
-    Navbar
+    TrendingNews
   }
 };
 </script>
-<style scoped>
+<style>
 </style>

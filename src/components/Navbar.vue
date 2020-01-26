@@ -1,89 +1,83 @@
 <template>
-  <nav>
-    <ul>
-      <li class="nav-btn">
-        <router-link to="/home">
-          <a class="nav-btn" href="default.asp">Home</a>
-        </router-link>
-      </li>
-      <li class="nav-btn">
-        <router-link to="/news">
-          <a class="nav-btn" href="default.asp">News</a>
-        </router-link>
-      </li>
-      <li class="nav-btn">
-        <router-link to="/contact">
-          <a class="nav-btn" href="default.asp">Contact</a>
-        </router-link>
-      </li>
-      <li class="nav-btn">
-        <router-link to="/about">
-          <a class="nav-btn" href="default.asp">About</a>
-        </router-link>
-      </li>
-      <li class="nav-btn">
-        <router-link to="/games">
-          <a class="nav-btn" href="default.asp">Games</a>
-        </router-link>
-      </li>
-      <li class="nav-btn">
-        <router-link to="/login">
-          <a class="nav-btn" href="default.asp">Login</a>
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/profile">
-          <img src="../assets/logo.png" class="profile-pic" />
-        </router-link>
-      </li>
-    </ul>
-  </nav>
+  <div>
+    <nav>
+      <router-link
+        class="spacing navbtn"
+        v-for="routes in links"
+        v-bind:key="routes.id"
+        :to="`${routes.page}`"
+      >{{routes.text}}</router-link>
+    </nav>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "Navbar"
+  name: "Navbar",
+  data() {
+    return {
+      links: [
+        {
+          id: 0,
+          text: "Home",
+          page: "/home"
+        },
+        {
+          id: 1,
+          text: "Login",
+          page: "/login"
+        },
+        {
+          id: 2,
+          text: "About",
+          page: "/about"
+        },
+        {
+          id: 3,
+          text: "Contact",
+          page: "/contact"
+        },
+        {
+          id: 4,
+          text: "Games",
+          page: "/games"
+        },
+        {
+          id: 5,
+          text: "News",
+          page: "/news"
+        },
+        {
+          id: 6,
+          text: "ProfilePage",
+          page: "/profilepage"
+        }
+      ]
+    };
+  }
 };
 </script>
 
-<style scoped>
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+<style>
+/* dont use scoped here bc we are rendering Navbarbar in app not individual components */
+
+.spacing {
+  margin-right: 10px;
+  text-align: center;
+}
+
+.navbtn {
+  color: white;
+  text-decoration: none;
+  padding: 14px 16px;
   background-color: #333;
 }
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-}
-
-/* Change the link color to #111 (black) on hover */
-li a:hover {
+.navbtn:hover {
   background-color: #111;
-}
-
-.profile-pic {
-  position: absolute;
-  right: 1rem;
-  text-align: center;
-  border: 2px white;
-  border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
-}
-.profile-pic:hover {
   cursor: pointer;
 }
-.nav-btn {
-  padding: 14px 16px;
+nav {
+  background: blue;
+  padding: 30px 30px;
 }
 </style>
