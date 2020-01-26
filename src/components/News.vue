@@ -1,18 +1,14 @@
 <template>
   <div>
-    <Navbar />
-    <h1>Hello from News</h1>
+    <h1>News</h1>
+    <p>Here is some information. This is the news page</p>
   </div>
 </template>
 
 <script>
-import Navbar from "../components/Navbar";
 export default {
-  name: "News",
-  components: {
-    Navbar
-  }
+  name: "News" //this is the name of the component
 };
 </script>
-<style scoped>
+<style>
 </style>

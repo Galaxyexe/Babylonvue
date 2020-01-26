@@ -1,18 +1,24 @@
+
 <template>
   <div>
-    <Navbar />
-    <h1>Hello from Contact</h1>
+    <h1>Contact Me</h1>
+  <p>
+    <ul>
+      <li>Email: {{email}}</li>
+      <li>Website: {{web}}</li>
+    </ul>
+  </p>
   </div>
 </template>
 
 <script>
-import Navbar from "../components/Navbar.vue";
 export default {
-  name: "Contact",
-  components: {
-    Navbar
+  name: 'Contact',
+  data(){
+    return {
+      email: "testemail",
+      web: "testwebsite"
+    }
   }
-};
+}
 </script>
-<style scoped>
-</style>

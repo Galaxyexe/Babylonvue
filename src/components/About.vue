@@ -1,18 +1,14 @@
 <template>
   <div>
-    <Navbar />
-    <h1>Hello from About</h1>
+    <h1>About</h1>
+    <p>Here is some information. This is the about page</p>
   </div>
 </template>
 
 <script>
-import Navbar from "../components/Navbar.vue";
 export default {
-  name: "About",
-  components: {
-    Navbar
-  }
+  name: "About" //this is the name of the component
 };
 </script>
-<style scoped>
+<style>
 </style>
