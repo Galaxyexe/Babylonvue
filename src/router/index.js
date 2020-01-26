@@ -18,7 +18,7 @@ export default new Router({
   mode: "history", //history changes url path so you don't need a # before page
   routes: [
     {
-      path: "/profile",
+      path: "/profilepage",
       name: "ProfilePage",
       component: ProfilePage
     },

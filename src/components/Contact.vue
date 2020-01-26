@@ -1,4 +1,3 @@
-
 <template>
   <div>
     <h1>Contact Me</h1>
@@ -22,3 +21,12 @@ export default {
   }
 }
 </script>
+
+<style> /* why does scoped not work here? */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+</style>
