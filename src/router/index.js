@@ -9,17 +9,14 @@ import About from "@/components/About";
 import News from "@/components/News";
 import Games from "@/components/Games";
 import Login from "@/components/Login";
+import Game1 from "@/components/gamelist/Game1";
+import GameTemplate from "@/components/GameTemplate";
 
 Vue.use(Router);
 
 export default new Router({
   mode: "history", //history changes url path so you don't need a # before page
   routes: [
-    {
-      path: "/",
-      name: "Navbar",
-      component: Navbar
-    },
     {
       path: "/profile",
       name: "ProfilePage",
@@ -54,6 +51,16 @@ export default new Router({
       path: "/login",
       name: "Login",
       component: Login
+    },
+    {
+      path: "/game1",
+      name: "Game1",
+      component: Game1
+    },
+    {
+      path: "/gametemplate",
+      name: "GameTemplate",
+      component: GameTemplate
     }
   ]
 });
