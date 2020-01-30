@@ -1,7 +1,5 @@
 <template>
   <div>
-    <Navbar />
-
     <div class="grid">
       <div class="card" v-bind:key="game.id" v-for="game in games">
         <router-link :to="game.path">
@@ -16,14 +14,8 @@
 </template>
 
 <script>
-import Navbar from "../components/Navbar";
 export default {
-  el: "gamelist",
-  name: "Games",
-  props: {
-    id: Number,
-    title: String
-  },
+  name: "Home",
   data: function() {
     return {
       games: [
@@ -35,9 +27,6 @@ export default {
         { id: 6, title: "game6", price: 19, path: "/game6" }
       ]
     };
-  },
-  components: {
-    Navbar
   }
 };
 </script>

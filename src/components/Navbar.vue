@@ -19,13 +19,13 @@ export default {
       links: [
         {
           id: 0,
-          text: "Login",
-          page: "/login"
+          text: "Home",
+          page: "/home"
         },
         {
           id: 1,
-          text: "Home",
-          page: "/home"
+          text: "Login",
+          page: "/login"
         },
         {
           id: 2,

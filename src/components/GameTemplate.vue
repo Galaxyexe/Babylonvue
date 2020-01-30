@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Navbar />
     <div class="grid">
       <div class="upcoming-tournaments"></div>
     </div>
@@ -10,12 +9,8 @@
 </template>
 
 <script>
-import Navbar from "@/components/Navbar";
 export default {
-  name: "GameTemplate",
-  components: {
-    Navbar
-  }
+  name: "GameTemplate"
 };
 </script>
 
