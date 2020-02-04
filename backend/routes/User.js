@@ -47,6 +47,69 @@ router.post("/register", async (req, res) => {
     });
   });
 });
+
+router.post("/login", async (req, res) => {
+  const password = req.body.password;
+
+  //Find User by email
+  const { errors, isValid } = validateLoginInput(req.body);
+  //check validation
+  if (!isValid) {
+    return res.status(400).json({
+      success: false,
+      simple: "Invalid login information.",
+      details: errors
+    });
+  }
+
+  User.findOne({
+    username: req.body.username
+  })
+    .then(user => {
+      //Check password
+      bcrypt.compare(password, user.password).then(isMatch => {
+        if (isMatch) {
+          //User matched
+          const payload = {
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            tier: user.tier
+          }; // create jwt payload
+          //Sign token
+          jwt.sign(
+            payload,
+            keys.secretOrKey,
+            {
+              expiresIn: "1d"
+            },
+            (err, token) => {
+              if (err)
+                res.status(500).json({
+                  success: false,
+                  simple: "unable to generate auth token.",
+                  details: err
+                });
+              else
+                res.json({
+                  success: true,
+                  token: "Bearer " + token
+                });
+            }
+          );
+        } else {
+          errors.password = "Password Incorrect.";
+          return res.status(400).json({
+            success: false,
+            simple: "Invalid body.",
+            details: errors
+          });
+        }
+      });
+    })
+    .catch(e => console.error(e));
+});
+
 module.exports = router;
 /*
 module.exports = function(passport) {
