@@ -1,8 +1,13 @@
 var express = require("express");
 var User = require("../models/user"); //uses Mongoose class
+
 const router = express.Router(); //calls constructor
+
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
 const validateRegisterInput = require("../validation/register");
+const validateLoginInput = require("../validation/login");
 
 router.get("/test", (req, res) => res.send("User Works"));
 
@@ -52,9 +57,9 @@ router.post("/login", async (req, res) => {
   const password = req.body.password;
 
   //Find User by email
-  const { errors, isValid } = validateLoginInput(req.body);
+  const { errors, valid } = await validateLoginInput(req.body);
   //check validation
-  if (!isValid) {
+  if (!valid) {
     return res.status(400).json({
       success: false,
       simple: "Invalid login information.",
@@ -71,15 +76,14 @@ router.post("/login", async (req, res) => {
         if (isMatch) {
           //User matched
           const payload = {
-            _id: user._id,
-            name: user.name,
-            email: user.email,
-            tier: user.tier
+            id: user.id,
+            username: user.username,
+            email: user.email
           }; // create jwt payload
           //Sign token
           jwt.sign(
             payload,
-            keys.secretOrKey,
+            "78:5f:4d:4e:a8:6a", //HIDE LATER
             {
               expiresIn: "1d"
             },

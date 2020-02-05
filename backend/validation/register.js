@@ -1,6 +1,6 @@
 const Validator = require("validator");
 const isEmpty = require("./is-empty");
-const User = require("../models/user"); //uses Mongoose class
+const User = require("../models/user");
 
 module.exports = async function validateRegisterInput(data) {
   let errors = {};

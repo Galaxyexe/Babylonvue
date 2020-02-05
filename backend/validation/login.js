@@ -1,33 +1,26 @@
 const Validator = require("validator");
 const isEmpty = require("./is-empty");
+const User = require("../models/user");
 
-module.exports = function validateLoginInput(data) {
+module.exports = async function validateLoginInput(data) {
   let errors = {};
   //important about empty string.
-  data.username= !isEmpty(data.email) ? data.email : "";
+  data.username = !isEmpty(data.username) ? data.username : "";
   data.password = !isEmpty(data.password) ? data.password : "";
 
   if (Validator.isEmpty(data.username)) {
-    errors.email = "Username field is required";
-  }
-
-  else if (!Validator.isEmail(data.email)) {
-    errors.email = "Username is invalid";
-  }
-
-  else if (Validator.isEmpty(data.password)) {
+    errors.username = "Username field is required";
+  } else if (Validator.isEmpty(data.password)) {
     errors.password = "Password cannot be empty";
-  }
-  else{
+  } else {
     await User.findOne({
-      username: req.body.username
+      username: data.username
     }).then(user => {
-      if (!user) errors.username= "User not found.";
+      if (!user) errors.username = "User not found.";
     });
   }
-  
   return {
     errors,
-    isValid: isEmpty(errors)
+    valid: isEmpty(errors)
   };
 };
